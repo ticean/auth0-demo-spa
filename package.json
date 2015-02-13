@@ -1,0 +1,9 @@
+{
+  "name": "auth0-demo-spa",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-sed": "^0.1.1",
+    "grunt-text-replace": "^0.4.0"
+  }
+}
