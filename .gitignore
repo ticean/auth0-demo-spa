@@ -1,5 +1,3 @@
 node_modules
 
-# Only this file is compiled for now. To keep it simple we'll keep everything in
-# and only ignore app.js.
-assets/app.js
+build/

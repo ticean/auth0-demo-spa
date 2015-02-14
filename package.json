@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-include-replace": "^3.0.0",
+    "grunt-replace": "^0.8.0",
     "grunt-sed": "^0.1.1",
     "grunt-text-replace": "^0.4.0"
   }

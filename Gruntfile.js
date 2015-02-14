@@ -5,23 +5,27 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     replace: {
       config: {
-        src: ['src/app.js'],
-        dest: 'assets/',
-        replacements: [
-          {
-            from: 'OAUTH_CLIENT_ID',
-            to: process.env['OAUTH_CLIENT_ID']
-          },
-          {
-            from: 'OAUTH_DOMAIN',
-            to: process.env['OAUTH_DOMAIN']
-          }
-        ]
+        options: {
+          patterns: [
+            {
+              json: {
+                "auth0ClientId": process.env['AUTH0_CLIENT_ID'],
+                "auth0Domain": process.env['AUTH0_DOMAIN']
+              }
+            }
+          ]
+        },
+        files: [{
+          expand: true,
+          flatten: true,
+          src: ['src/javascripts/*.js'],
+          dest: 'build/javascripts/'
+        }]
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-text-replace');
+  grunt.loadNpmTasks('grunt-replace');
 
   // Default task(s).
   grunt.registerTask('default', ['replace:config']);
