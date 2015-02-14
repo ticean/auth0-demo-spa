@@ -4,6 +4,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     copy: {
+      cname: {
+        files: [
+          {src: ['CNAME'], dest: 'build/'},
+        ],
+      },
       main: {
         files: [
           {expand: true, cwd: 'src/', src: ['*'], dest: 'build/', filter: 'isFile'},
@@ -11,6 +16,13 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'src/', src: ['stylesheets/**'], dest: 'build/'},
         ],
       },
+    },
+    'gh-pages': {
+      options: {
+        base: 'build',
+        message: 'Auto-generated commit'
+      },
+      src: ['**']
     },
     replace: {
       config: {
@@ -35,9 +47,10 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-replace');
 
   // Default task(s).
-  grunt.registerTask('default', ['copy:main', 'replace:config']);
+  grunt.registerTask('default', ['copy:main', 'copy:cname', 'replace:config']);
 
 };
