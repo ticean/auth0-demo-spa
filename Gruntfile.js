@@ -3,6 +3,14 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    copy: {
+      main: {
+        files: [
+          {expand: true, cwd: 'src/', src: ['images/**'], dest: 'build/', filter: 'isFile'},
+          {expand: true, cwd: 'src/', src: ['stylesheets/**'], dest: 'build/', filter: 'isFile'},
+        ],
+      },
+    },
     replace: {
       config: {
         options: {
@@ -25,9 +33,10 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-replace');
 
   // Default task(s).
-  grunt.registerTask('default', ['replace:config']);
+  grunt.registerTask('default', ['copy:main', 'replace:config']);
 
 };
