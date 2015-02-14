@@ -20,4 +20,7 @@ It's best to start an HTTP server to serve the page.
 
 1. Install node
 2. run `npm install -g serve`
-3. run `serve` in the directory of this project.
+3. run `npm install -g grunt-cli`
+4. run `grunt`
+5. run `cd build`
+6. run `serve`
