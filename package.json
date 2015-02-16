@@ -1,6 +1,10 @@
 {
   "name": "auth0-demo-spa",
   "version": "0.1.0",
+  "scripts": {
+    "prestart": "npm build; grunt build",
+    "start": "serve -p ${PORT:=3000} build"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-copy": "^0.7.0",

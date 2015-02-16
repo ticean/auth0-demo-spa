@@ -50,7 +50,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-replace');
 
-  // Default task(s).
-  grunt.registerTask('default', ['copy:main', 'copy:cname', 'replace:config']);
+  // Tasks.
+  grunt.registerTask('build', ['copy:main', 'copy:cname', 'replace:config']);
+  grunt.registerTask('deploy', ['build', 'gh-pages']);
+  grunt.registerTask('default', ['build']);
 
 };

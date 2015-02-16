@@ -8,19 +8,42 @@ config.
 
 ## Running the Project
 
-#### Compile the configuration
+#### Install Dependencies
 
-1. run `npm install -g grunt-cli`
-2. run `npm install`
-3. run `grunt`
+```
+# Assuming Node.js is installed...
+npm install -g grunt-cli
+npm install -g serve
+npm install
+```
+
+#### Compile with Grunt
+The project uses Grunt to compile the JavaScript configuration from ENV vars.
+Configure the following ENV variables.
+
+```sh
+AUTH0_CLIENT_ID=xxxxx
+AUTH0_DOMAIN=example.auth0.com
+PORT=3004 # default 3000
+```
+
+Compile:
+
+`grunt`
 
 #### Start the server
 
-It's best to start an HTTP server to serve the page.
+Start a local static file server to serve the assets on a configured port:
 
-1. Install node
-2. run `npm install -g serve`
-3. run `npm install -g grunt-cli`
-4. run `grunt`
-5. run `cd build`
-6. run `serve`
+```sh
+npm start
+```
+
+## Deploying to Github Pages
+A Grunt task is added to deploy the static site to Github Pages. Build the
+project normally. Then run the `gh-deploy` task to push to github pages.
+
+```sh
+grunt build
+grunt gh-pages
+```
